@@ -167,29 +167,18 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    void AdicionarNovaPalavra(string palavra)
-    {
-        //Modificado o tipo  da array "palavrasSecretas" por umna lista de strings assim não teremos que fazer com um tamanho fixo de array acabando com a necessidade de
-        //criar outra array e substituir pela outra no momento de uma nova palavra adicionada. 
-        TextAsset text = (TextAsset)Resources.Load("palavras", typeof(TextAsset));
-
-        string s = text.text;
-        string[] palavras = s.Split(' ');
-        palavras[palavras.Length + 1] = palavra;
-    }
-
     void UpdateNumTentativas()
     {
         GameObject.Find("numTentativas").GetComponent<Text>().text = numTentativas.ToString() + " | " + numMaximoTentativas;
         if(numTentativas >= numMaximoTentativas)
         {
-            SceneManager.LoadScene("GameOver");
+            SceneManager.LoadScene("GameOver"); //vai para a cena de Game Over
         }
     }
 
     void UpdateScore()
     {
-        GameObject.Find("scoreUI").GetComponent<Text>().text = $"Score: {score}";
+        GameObject.Find("scoreUI").GetComponent<Text>().text = $"Score: {score}"; //atualiza o score
 
     }
 
@@ -199,7 +188,7 @@ public class GameManager : MonoBehaviour
 
         for(int i = 0; i < tamanhoPalavra; i++)
         {
-            ganhou = ganhou && letrasDescobertas[i];
+            ganhou = ganhou && letrasDescobertas[i]; //checa se todas as letras foram descobertas
         }
 
         if (ganhou)
@@ -213,14 +202,19 @@ public class GameManager : MonoBehaviour
     {
         TextAsset text = (TextAsset)Resources.Load("palavras", typeof(TextAsset));
 
-        string s = text.text;
-        string[] palavras = s.Split(' ');
+        string s = text.text; //pega o texto do text file "palavras.txt"
+        string[] palavras = s.Split(' '); //separa as palavras a partir de um espaço
         int numAleatorio = Random.Range(0, palavras.Length + 1);
         return palavras[numAleatorio];
     }
 
     public void SetDificuldade()
     {
+        //Setando o tamanho maximo e minimo da palavra de acordo com a dificuldade, para assim pegar palavras
+        //com o tamanho relacionado à dificuldade
+        // fácil 0 - 4
+        // normal 5 - 6
+        // difícil 7 - 15
         if (Dificuldade == "easy")
         {
             tamanhoMinimoPalavra = 0;
