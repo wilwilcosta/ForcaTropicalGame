@@ -24,17 +24,17 @@ public class GameManager : MonoBehaviour
 
     int score = 0;                        //pontuação do jogador, aumenta a cada letra adivinhada corretamente
  
-    public List<string> palavrasSecretas = new List<string> // array com todas as palavras ocultas
-    {
-        "carro",
-        "elefante",
-        "banana",
-        "macaco",
-        "predio",
-        "teclado",
-        "pote",
-        "bola"
-    };
+    //public List<string> palavrasSecretas = new List<string> // array com todas as palavras ocultas
+    //{
+    //    "carro",
+    //    "elefante",
+    //    "banana",
+    //    "macaco",
+    //    "predio",
+    //    "teclado",
+    //    "pote",
+    //    "bola"
+    //};
    
     // Start is called before the first frame update
     void Start()
@@ -72,7 +72,7 @@ public class GameManager : MonoBehaviour
     void InicializarGame()
     {
 
-        int numeroAleatorioParaEscolha = Random.Range(0, palavrasSecretas.Count - 1);
+        //int numeroAleatorioParaEscolha = Random.Range(0, palavrasSecretas.Count - 1);
         SetDificuldade();
 
         palavraSecreta = PegaPalavraArquivo();          //Implementação da escolha randômica de palavras armazenadas no programa

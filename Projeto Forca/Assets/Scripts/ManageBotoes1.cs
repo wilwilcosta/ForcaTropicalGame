@@ -39,4 +39,9 @@ public class ManageBotoes1 : MonoBehaviour
         StartForcaGame();
     }
 
+    public void GoToCreditos()
+    {
+        SceneManager.LoadScene("Creditos");
+    }
+
 }
